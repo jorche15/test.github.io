@@ -1,0 +1,130 @@
+<doctype html>
+<html>
+    <head>
+        <title>Test de 5 Preguntas</title>
+        <style>
+            body {
+                background-color: black;
+                color: white;
+                font-variant: normal;
+                font-size: 20px;
+                font-family: Arial, sans-serif;
+                text-align: center;
+            }
+            img {
+                width: 100%;
+                height: auto;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: -1;
+                opacity: 0.5; /* Hace el fondo más tenue */
+            }
+            form {
+                margin-top: 50px;
+                background-color: rgba(0, 0, 0, 0.8); /* Fondo semitransparente */
+                padding: 20px;
+                border-radius: 10px;
+                display: inline-block;
+                text-align: left;
+            }
+            label {
+                display: block;
+                margin: 10px 0 5px;
+            }
+            input[type="radio"] {
+                margin-right: 10px;
+            }
+            button {
+                margin-top: 20px;
+                padding: 10px 20px;
+                background-color: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: #45a049;
+            }
+            #resultados {
+                margin-top: 30px;
+                background-color: rgba(0, 0, 0, 0.8);
+                padding: 20px;
+                border-radius: 10px;
+                display: none; /* Oculto inicialmente */
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Test de 5 Preguntas</h1>
+        <img src="fondo de pagina.jpg" alt="Fondo de página">
+        <form id="testForm">
+            <div>
+                <label>1. ¿Cuál es tu tamaño adecuado de pito?</label>
+                <input type="radio" name="pregunta1" value="5cm"> 5cm
+                <input type="radio" name="pregunta1" value="10 cm"> 10cm
+                <input type="radio" name="pregunta1" value="13cm"> 13cm
+            </div>
+            <div>
+                <label>2. ¿Edad que tuviste tu primer novia?</label>
+                <input type="radio" name="pregunta2" value="10"> 10
+                <input type="radio" name="pregunta2" value="15"> 15
+                <input type="radio" name="pregunta2" value="no tengo"> No tengo
+            </div>
+            <div>
+                <label>3. ¿Qué tipo de música te gusta?</label>
+                <input type="radio" name="pregunta3" value="rock"> Rock
+                <input type="radio" name="pregunta3" value="pop"> Pop
+                <input type="radio" name="pregunta3" value="billie eilish"> Billie Eilish
+            </div>
+            <div>
+                <label>4. ¿Cuál es tu comida favorita?</label>
+                <input type="radio" name="pregunta4" value="alozz chino"> Alloz chino
+                <input type="radio" name="pregunta4" value="hamburguesa"> Hamburguesa
+                <input type="radio" name="pregunta4" value="salchicha"> Salchicha
+            </div>
+            <div>
+                <label>5. ¿Qué prefieres hacer en tu tiempo libre?</label>
+                <input type="radio" name="pregunta5" value="meterme deo"> Meterme deo
+                <input type="radio" name="pregunta5" value="ver peliculas"> Ver películas
+                <input type="radio" name="pregunta5" value="salir"> Salir con amigos
+            </div>
+            <button type="button" onclick="mostrarResultados()">Enviar Respuestas</button>
+        </form>
+
+        <div id="resultados">
+            <h2>¡felicidades!</h2>
+            <p>eres 100% puta:</p>
+            <p id="respuesta1">13cm</p>
+            <p id="respuesta2">no tengo</p>
+            <p id="respuesta3">billie eilish</p>
+            <p id="respuesta4">alloz chino</p>
+            <p id="respuesta5">meterme deo</p>
+        </div>
+
+        <script>
+            function mostrarResultados() {
+                // Obtener las respuestas seleccionadas
+                const respuestas = {
+                    pregunta1: document.querySelector('input[name="pregunta1"]:checked')?.value || 'No respondido',
+                    pregunta2: document.querySelector('input[name="pregunta2"]:checked')?.value || 'No respondido',
+                    pregunta3: document.querySelector('input[name="pregunta3"]:checked')?.value || 'No respondido',
+                    pregunta4: document.querySelector('input[name="pregunta4"]:checked')?.value || 'No respondido',
+                    pregunta5: document.querySelector('input[name="pregunta5"]:checked')?.value || 'No respondido',
+                };
+
+                // Mostrar las respuestas en el div de resultados
+                document.getElementById('respuesta1').textContent = `1. Tamaño adecuado: ${respuestas.pregunta1}`;
+                document.getElementById('respuesta2').textContent = `2. Edad de tu primer novia: ${respuestas.pregunta2}`;
+                document.getElementById('respuesta3').textContent = `3. Tipo de música: ${respuestas.pregunta3}`;
+                document.getElementById('respuesta4').textContent = `4. Comida favorita: ${respuestas.pregunta4}`;
+                document.getElementById('respuesta5').textContent = `5. Tiempo libre: ${respuestas.pregunta5}`;
+
+                // Ocultar el formulario y mostrar los resultados
+                document.getElementById('testForm').style.display = 'none';
+                document.getElementById('resultados').style.display = 'block';
+            }
+        </script>
+    </body>
+</html>
